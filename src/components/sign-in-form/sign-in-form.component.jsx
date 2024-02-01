@@ -14,7 +14,7 @@ const defaultFormField = {
   password: "",
 };
 
-const SignInForm = ({ onClickHandler }) => {
+const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormField);
   const { email, password } = formFields;
 
@@ -26,11 +26,9 @@ const SignInForm = ({ onClickHandler }) => {
     event.preventDefault();
 
     try {
-      const response = await signInUserWithEmailAndPassword(email, password);
-      if (response) {
-        console.log(response);
-        resetFormFields();
-      }
+      await signInUserWithEmailAndPassword(email, password);
+
+      resetFormFields();
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
         alert("incorrect email or password");
@@ -46,8 +44,7 @@ const SignInForm = ({ onClickHandler }) => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   return (
