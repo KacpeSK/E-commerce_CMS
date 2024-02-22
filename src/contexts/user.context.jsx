@@ -21,12 +21,13 @@ export const UserProvider = ({ children }) => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
-      console.log(user);
       setCurrentUser(user);
     });
 
     return unsubscribe;
   }, []);
+
+  console.log(currentUser);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
