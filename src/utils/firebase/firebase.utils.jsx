@@ -24,13 +24,26 @@ import {
 
 import.meta.env.VITE_apiKey;
 
-const firebaseConfigENV = {
+//Use during dev
+
+/* const firebaseConfigENV = {
   apiKey: import.meta.env.VITE_apiKey,
   authDomain: import.meta.env.VITE_authDomain,
   projectId: import.meta.env.VITE_projectId,
   storageBucket: import.meta.env.VITE_storageBucket,
   messagingSenderId: import.meta.env.VITE_messagingSenderId,
   appId: import.meta.env.VITE_appId,
+};*/
+
+//Use in deployTest
+
+const firebaseConfigENV = {
+  apiKey: process.env.VITE_apiKey,
+  authDomain: process.env.VITE_authDomain,
+  projectId: process.env.VITE_projectId,
+  storageBucket: process.env.VITE_storageBucket,
+  messagingSenderId: process.env.VITE_messagingSenderId,
+  appId: process.env.VITE_appId,
 };
 
 const firebaseConfig = firebaseConfigENV;
