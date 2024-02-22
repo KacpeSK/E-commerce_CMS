@@ -5,8 +5,6 @@ import {
   getCategoriesAndDocuments,
 } from "../utils/firebase/firebase.utils.jsx";
 
-import SHOP_DATA from "../shop-data.js";
-
 export const CategoriesContext = createContext({
   categoriesMap: {},
 });
@@ -26,7 +24,6 @@ export const CategoriesProvider = ({ children }) => {
       try {
         const categoryMap = await getCategoriesAndDocuments();
         setCategoriesMap(categoryMap);
-        console.log("CategoriesMap loaded successfully:", categoryMap);
       } catch (error) {
         console.error("Error loading CategoriesMap:", error);
       }
@@ -36,8 +33,6 @@ export const CategoriesProvider = ({ children }) => {
   }, []);
 
   const value = { categoriesMap };
-
-  console.log("Context - categoriesMap:", categoriesMap);
 
   return (
     <CategoriesContext.Provider value={value}>
