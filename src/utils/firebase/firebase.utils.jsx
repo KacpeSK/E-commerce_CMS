@@ -100,11 +100,11 @@ export const createUserDocumentFromAuth = async (
       });
       /* we spreaded additionalData to use it if we wont get display name from Auth (look comment above)*/
     } catch (error) {
-      console.log("There s error createing a user: ", error.message);
+      console.log("There s error creating a user: ", error.message);
     }
   }
 
-  return userDocRef;
+  return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -128,4 +128,17 @@ export const onAuthStateChangedListener = (callback) => {
     onAuthStateChanged(auth, callback);
   }
   return;
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
 };
