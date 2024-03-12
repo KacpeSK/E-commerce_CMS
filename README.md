@@ -1,6 +1,6 @@
 # E-commerce_CMS
 
-![React-icon](https://github.com/KacpeSK/E-commerce_CMS/assets/142713164/82255202-2b31-4670-b68f-3d33243bd9a0 | width=100)
+<img src="https://github.com/KacpeSK/E-commerce_CMS/assets/142713164/82255202-2b31-4670-b68f-3d33243bd9a0" width="150px"/>
 
 Crafted as a bespoke project within the context of studying and exploring the expansive possibilities of React, this endeavor represents an E-commerce Single Page Application (SPA) functioning as a dynamic e-shop platform.
 
