@@ -4,8 +4,8 @@ import {
   selectCartTotal,
 } from "../../store/cart/cart.selector";
 
-import Button from "../../components/button/button.component";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import PaymentForm from "../../components/payment-form/payment-form.component";
 
 import "./checkout.styles.scss";
 
@@ -40,7 +40,7 @@ const Checkout = () => {
         );
       })}
       <h2 className="total">Total: {cartTotal}€</h2>
-      <Button>Pay</Button>
+      <PaymentForm></PaymentForm>
     </div>
   );
 };
