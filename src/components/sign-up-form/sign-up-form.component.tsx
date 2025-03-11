@@ -7,6 +7,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import "./sign-up-form.styles.scss";
 import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.componen";
 
 const defaultFormFields = {
   displayName: "",
@@ -37,6 +38,8 @@ const SignUpForm = () => {
       const userDocRef = await createUserDocumentFromAuth(user, displayName);
       resetFormFields();
     } catch (error) {
+      if (error.code === "auth/email-already-in-use");
+      alert("Cannot create user with this email");
       console.log(error);
     }
   };
@@ -48,8 +51,9 @@ const SignUpForm = () => {
   console.log(formFields);
 
   return (
-    <div>
-      <h1>Sign up with your email and password</h1>
+    <div className="sign-up-container">
+      <h2>Don't have an account?</h2>
+      <span>Sign up with your email and password</span>
       <form onSubmit={HandleSubmit}>
         <FormInput
           label={"Display Name"}
@@ -83,7 +87,7 @@ const SignUpForm = () => {
           required
           onChange={HandleChange}
         />
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );
