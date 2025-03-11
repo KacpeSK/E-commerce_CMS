@@ -2,7 +2,7 @@
 // @ts-nocheck
 import { Routes, Route } from "react-router";
 import Navigation from "./routes/navigation/navigation.component";
-import SignIn from "./routes/sign-in/sign-in.component";
+import Authentication from "./routes/authentication/authentication";
 
 import "./App.scss";
 import Home from "./routes/home/home.components";
@@ -24,8 +24,8 @@ const App = () => {
             element={<Shop />}
           />
           <Route
-            path="signIn"
-            element={<SignIn />}
+            path="auth"
+            element={<Authentication />}
           />
         </Route>
       </Routes>
