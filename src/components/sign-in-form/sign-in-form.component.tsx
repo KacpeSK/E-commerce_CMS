@@ -28,8 +28,7 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     try {
-      const { user } = await signInWithGooglePopup();
-      const userDocRef = await createUserDocumentFromAuth(user);
+      await signInWithGooglePopup();
     } catch (error) {
       console.log(error);
     }
@@ -38,11 +37,10 @@ const SignInForm = () => {
   const HandleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -63,7 +61,6 @@ const SignInForm = () => {
     const { name, value } = event.target;
     setFormFields((prev) => ({ ...prev, [name]: value }));
   };
-  console.log(formFields);
 
   return (
     <div className="sign-in-container">
@@ -82,7 +79,7 @@ const SignInForm = () => {
           label={"Password"}
           name="password"
           value={password}
-          type="text"
+          type="password"
           required
           onChange={HandleChange}
         />

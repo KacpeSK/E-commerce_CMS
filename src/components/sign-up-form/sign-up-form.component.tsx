@@ -1,6 +1,7 @@
 /* eslint-disable */
 // @ts-nocheck
-import { useState } from "react";
+import { useState, useCallback } from "react";
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -35,7 +36,9 @@ const SignUpForm = () => {
         email,
         password
       );
-      const userDocRef = await createUserDocumentFromAuth(user, displayName);
+      const userDocRef = await createUserDocumentFromAuth(user, {
+        displayName,
+      });
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use");
@@ -49,7 +52,6 @@ const SignUpForm = () => {
     setFormFields((prev) => ({ ...prev, [name]: value }));
   };
   console.log(formFields);
-
   return (
     <div className="sign-up-container">
       <h2>Don't have an account?</h2>
@@ -75,7 +77,7 @@ const SignUpForm = () => {
           label={"Password"}
           name="password"
           value={password}
-          type="text"
+          type="password"
           required
           onChange={HandleChange}
         />
