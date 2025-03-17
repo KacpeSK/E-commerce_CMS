@@ -3,6 +3,7 @@
 import { Routes, Route } from "react-router";
 import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication";
+import Shop from "./routes/shop/shop.component";
 
 import "./App.scss";
 import Home from "./routes/home/home.components";
@@ -34,12 +35,3 @@ const App = () => {
 };
 
 export default App;
-
-const Shop = () => {
-  return (
-    <>
-      <p>I am SHOP :</p>
-    </>
-  );
-};
-
