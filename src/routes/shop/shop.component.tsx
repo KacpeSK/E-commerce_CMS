@@ -2,7 +2,7 @@
 // @ts-nocheck
 import { useContext } from "react";
 import { ProductsContext } from "../../contexts/products.context";
-import ProductCard from "../../components/product-card/priducts-card.components";
+import ProductCard from "../../components/product-card/products-card.components";
 import "./shop.styles.scss";
 
 const Shop = () => {
