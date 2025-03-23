@@ -2,9 +2,10 @@
 // @ts-nocheck
 import { useState } from "react";
 
-import "./sign-in-form.styles.scss";
+import { SignInContainer, ButtonsContainer } from "./sign-in-form.styles";
+
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import {
   signInAuthUserWithEmailAndPassword,
   createAuthUserWithEmailAndPassword,
@@ -63,7 +64,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-in-container">
+    <SignInContainer>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={HandleSubmit}>
@@ -83,18 +84,18 @@ const SignInForm = () => {
           required
           onChange={HandleChange}
         />
-        <div className="buttons-container">
+        <ButtonsContainer>
           <Button type="submit">Sign In</Button>
           <Button
             type="button"
-            buttonType={"google"}
+            buttonType={BUTTON_TYPE_CLASSES.google}
             onClick={signInWithGoogle}
           >
             Google Sign IN
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 

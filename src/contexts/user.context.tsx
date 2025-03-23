@@ -1,14 +1,11 @@
 /* eslint-disable */
 // @ts-nocheck
 import { createContext, useState, useEffect } from "react";
-import {
-  onAuthStateChangedListener,
-  signOutUser,
-} from "../utils/firebase/firebase.utils";
+import { onAuthStateChangedListener } from "../utils/firebase/firebase.utils";
 import { createUserDocumentFromAuth } from "../utils/firebase/firebase.utils";
 
 // as actual value you want to access
-export const UserContext = createContext({
+const UserContext = createContext({
   currentUser: undefined,
   setCurrentUser: () => undefined,
 });
@@ -19,7 +16,6 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
-      console.log(user);
       if (user && user.displayName) {
         createUserDocumentFromAuth(user);
       }
@@ -30,3 +26,5 @@ export const UserProvider = ({ children }) => {
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
+
+export default UserContext;
